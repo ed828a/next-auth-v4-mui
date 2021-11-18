@@ -4,9 +4,8 @@ import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
 
 import { sendVerificationRequest } from "../../../lib/nodemailer.helper";
-// import AppleProvider from "next-auth/providers/apple"
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
-import clientPromise from "../../../lib/mongodb.helper";
+import dbConnect from "../../../lib/dbConnect";
 
 
 // For more information on each option (and a full list of options) go to
@@ -14,8 +13,9 @@ import clientPromise from "../../../lib/mongodb.helper";
 export default async function auth(req, res) {
   return await NextAuth(req, res, {
     adapter: MongoDBAdapter({
-      db: (await clientPromise).db("next-auth-example"),
+      // db: (await clientPromise).db("next-auth-example"),
       // ObjectId,
+      db: (await dbConnect()).connection.db
     }),
     // https://next-auth.js.org/configuration/providers
     providers: [
