@@ -14,7 +14,6 @@ export default async function auth(req, res) {
   return await NextAuth(req, res, {
     adapter: MongoDBAdapter({
       // db: (await clientPromise).db("next-auth-example"),
-      // ObjectId,
       db: (await dbConnect()).connection.db
     }),
     // https://next-auth.js.org/configuration/providers
