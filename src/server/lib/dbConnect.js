@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.DATABASE_URL;
 
 if (!MONGODB_URI) {
   if (!process.browser) {
@@ -47,7 +47,7 @@ async function dbConnect() {
   }
   cached.conn = await cached.promise;
 
-  console.log('cached.conn.connection: ', cached.conn.connection);
+  // console.log('cached.conn.connection: ', cached.conn.connection);
 
   return cached.conn;
 }

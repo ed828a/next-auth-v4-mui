@@ -1,0 +1,14 @@
+.genresMenu {
+  background-color: #FF9800;
+  color: white;
+}
+
+.genresMenuItem {
+  background-color: #D9AB27;
+}
+.genresMenuItem:hover {
+  background-color: #EF5350;
+}
+.genresMenuItemSelected {
+  background-color: #EF5350;
+}

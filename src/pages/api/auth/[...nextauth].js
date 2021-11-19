@@ -3,9 +3,9 @@ import EmailProvider from "next-auth/providers/email";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
 
-import { sendVerificationRequest } from "../../../lib/nodemailer.helper";
+import { sendVerificationRequest } from "../../../server/lib/nodemailer.helper";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
-import dbConnect from "../../../lib/dbConnect";
+import dbConnect from "../../../server/lib/dbConnect";
 
 
 // For more information on each option (and a full list of options) go to
@@ -13,7 +13,6 @@ import dbConnect from "../../../lib/dbConnect";
 export default async function auth(req, res) {
   return await NextAuth(req, res, {
     adapter: MongoDBAdapter({
-      // db: (await clientPromise).db("next-auth-example"),
       db: (await dbConnect()).connection.db
     }),
     // https://next-auth.js.org/configuration/providers
